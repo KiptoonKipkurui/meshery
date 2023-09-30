@@ -1,5 +1,4 @@
 name: Meshery End-to-End Tests with mesheryctl
-runs-on: self-hosted
 on:
   workflow_dispatch:
     inputs:
@@ -22,7 +21,7 @@ on:
 jobs:
   manual-test:
     name: Manual e2e Test
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     if: ${{ github.event_name == 'workflow_dispatch' }}
     strategy:
       fail-fast: false
@@ -76,7 +75,7 @@ jobs:
   
   scheduled-test:
     name: Scheduled e2e Test
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     if: ${{ github.event_name == 'schedule' && github.repository == 'meshery/meshery' }}
     strategy:
       fail-fast: false
