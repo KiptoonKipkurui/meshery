@@ -80,7 +80,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        k8s_version: ['v1.27.3', 'v1.26.6', 'v1.25.11']
+        k8s_version: ['v1.27.3']
         platform: ['docker', 'kubernetes']
     steps:
       - name: Setup Kubernetes
@@ -102,7 +102,10 @@ jobs:
 
       - name: Checkout Code
         uses: actions/checkout@master
-
+      - uses: azure/setup-kubectl@v3
+        with:
+           version: '1.27' # default is latest stable
+        id: install
       - name: Run Performance Tests
         uses: layer5io/meshery-smp-action@master
         with:
