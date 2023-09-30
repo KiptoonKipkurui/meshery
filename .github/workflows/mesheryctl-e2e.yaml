@@ -1,4 +1,5 @@
 name: Meshery End-to-End Tests with mesheryctl
+runs-on: self-hosted
 on:
   workflow_dispatch:
     inputs:
